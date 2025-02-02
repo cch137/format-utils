@@ -1,6 +1,6 @@
 {
   "name": "@cch137/format-utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "type": "module",
   "scripts": {
@@ -24,5 +24,17 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "exports": {
+    "./bigmap": "./bigmap/index.js",
+    "./bytes": "./bytes/index.js",
+    "./date": "./date/index.js",
+    "./detect-languages": "./detect-languages/index.js",
+    "./numeric-compare": "./numeric-compare/index.js",
+    "./objects": "./objects/index.js",
+    "./read-stream": "./read-stream/index.js",
+    "./server": "./server/index.js",
+    "./urls": "./urls/index.js",
+    "./youtube": "./youtube/index.js"
   }
 }
