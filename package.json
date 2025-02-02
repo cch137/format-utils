@@ -1,6 +1,6 @@
 {
   "name": "@cch137/format-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "type": "module",
   "scripts": {
@@ -19,9 +19,10 @@
   ],
   "author": "cch137",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.13.0"
+  },
   "engines": {
     "node": ">=20"
-  },
-  "dependencies": {}
+  }
 }

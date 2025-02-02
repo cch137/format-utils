@@ -28,3 +28,19 @@
 
 - 提供同步函式將 stream 轉換成多種格式（`Uint8Array` 和 `string`）。
 - 將 `Uint8Array` 轉換為 `ReadableStream` 。
+
+### `server`
+
+- 提供 `getRequestIp` 。
+
+### `detect-languages`
+
+- 偵測文本語言。
+
+### `urls`
+
+- 提取文本鏈接。
+
+### `youtube`
+
+- 與 YouTube 鏈接相關的功能。
