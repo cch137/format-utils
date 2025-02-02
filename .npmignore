@@ -1,5 +1,3 @@
-test.js
-test.d.ts
-index.test.js
-index.test.d.ts
-.deprecated/
+**/test.**
+**/**.test.**
+**.d.ts.map

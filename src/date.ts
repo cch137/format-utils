@@ -1,6 +1,3 @@
-import str from "./index.js";
-import { round } from "../number/index.js";
-
 const fullMonthNames = [
   "January",
   "February",
@@ -76,26 +73,26 @@ export default function formatDate(
   const _h = dateProperties.H % 12;
   const h = _h === 0 ? 12 : _h;
   format = format
-    .replace(/yyyy/g, str(dateProperties.y))
+    .replace(/yyyy/g, String(dateProperties.y))
     .replace(/yy/g, `${dateProperties.y}`.substring(2, 4))
-    .replace(/y/g, str(dateProperties.y))
+    .replace(/y/g, String(dateProperties.y))
     .replace(/HH/g, addLeadingZeros(dateProperties.H))
-    .replace(/H/g, str(dateProperties.H))
+    .replace(/H/g, String(dateProperties.H))
     .replace(/hh/g, addLeadingZeros(h))
-    .replace(/h/g, str(h))
+    .replace(/h/g, String(h))
     .replace(/mm/g, addLeadingZeros(dateProperties.m))
-    .replace(/m/g, str(dateProperties.m))
+    .replace(/m/g, String(dateProperties.m))
     .replace(/ss/g, addLeadingZeros(dateProperties.s))
-    .replace(/s/g, str(dateProperties.s))
-    .replace(/fff/g, str(round(dateProperties.f)))
-    .replace(/ff/g, str(round(dateProperties.f / 10)))
-    .replace(/f/g, str(round(dateProperties.f / 100)))
+    .replace(/s/g, String(dateProperties.s))
+    .replace(/fff/g, String(Math.round(dateProperties.f)))
+    .replace(/ff/g, String(Math.round(dateProperties.f / 10)))
+    .replace(/f/g, String(Math.round(dateProperties.f / 100)))
     .replace(/TT/gi, T)
     .replace(/T/gi, T.charAt(0))
     .replace(/dddd/g, fullDayNames[dateProperties.w])
     .replace(/ddd/g, abbreviatedDayNames[dateProperties.w])
     .replace(/dd/g, addLeadingZeros(dateProperties.d))
-    .replace(/d/g, str(dateProperties.d));
+    .replace(/d/g, String(dateProperties.d));
   const formatBefore = format;
   format = format
     .replace(/MMMM/g, fullMonthNames[dateProperties.M - 1])
@@ -104,5 +101,5 @@ export default function formatDate(
     ? format
     : format
         .replace(/MM/g, addLeadingZeros(dateProperties.M))
-        .replace(/M/g, str(dateProperties.M));
+        .replace(/M/g, String(dateProperties.M));
 }

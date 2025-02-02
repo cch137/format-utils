@@ -1,31 +1,27 @@
 {
-  "name": "@cch137/utils",
-  "version": "0.3.9",
+  "name": "@cch137/format-utils",
+  "version": "0.0.1",
   "description": "",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "scripts": {
-    "devbuild": "tsc -w",
-    "devstart": "nodemon ./dist/index.js",
-    "test": "npm-run-all --parallel devbuild devstart"
+    "dev": "bash bin/dev",
+    "build": "npm i && tsc",
+    "start": "node ./dist/index.test.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cch137/ts-utils"
+    "url": "https://github.com/cch137/format-utils"
   },
+  "keywords": [
+    "cch137",
+    "format",
+    "utils"
+  ],
   "author": "cch137",
   "license": "ISC",
-  "dependencies": {
-    "crypto-js": "^4.2.0",
-    "qs": "^6.12.1"
+  "devDependencies": {},
+  "engines": {
+    "node": ">=20"
   },
-  "devDependencies": {
-    "@types/crypto-js": "^4.2.2",
-    "@types/node": "^20.12.11",
-    "@types/qs": "^6.9.15",
-    "npm-run-all": "^4.1.5",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
-  }
+  "dependencies": {}
 }
