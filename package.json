@@ -1,6 +1,6 @@
 {
   "name": "@cch137/format-utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "type": "module",
   "scripts": {
@@ -30,9 +30,11 @@
     "./bytes": "./bytes/index.js",
     "./date": "./date/index.js",
     "./detect-languages": "./detect-languages/index.js",
+    "./fetch2": "./fetch2/index.js",
     "./numeric-compare": "./numeric-compare/index.js",
     "./objects": "./objects/index.js",
     "./read-stream": "./read-stream/index.js",
+    "./safe-filename": "./safe-filename/index.js",
     "./server": "./server/index.js",
     "./urls": "./urls/index.js",
     "./youtube": "./youtube/index.js"
