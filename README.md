@@ -6,11 +6,11 @@
 
 ### `date`
 
-提供 `Date` 格式化功能。
+- 提供 `Date` 格式化功能。
 
 ### `bytes`
 
-提供數值轉 bytes 格式化功能。
+- 提供數值轉 bytes 格式化功能。
 
 ### `numeric-compare`
 
@@ -40,6 +40,10 @@
 ### `server`
 
 - 提供 `getRequestIp` 。
+
+### `sleep`
+
+- 提供 `sleep` 。
 
 ### `detect-languages`
 
