@@ -1,6 +1,6 @@
 {
   "name": "@cch137/format-utils",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "",
   "type": "module",
   "scripts": {
@@ -26,18 +26,57 @@
     "node": ">=20"
   },
   "exports": {
-    "./bigmap": "./bigmap/index.js",
-    "./bytes": "./bytes/index.js",
-    "./date": "./date/index.js",
-    "./detect-languages": "./detect-languages/index.js",
-    "./fetch2": "./fetch2/index.js",
-    "./numeric-compare": "./numeric-compare/index.js",
-    "./objects": "./objects/index.js",
-    "./read-stream": "./read-stream/index.js",
-    "./safe-filename": "./safe-filename/index.js",
-    "./server": "./server/index.js",
-    "./sleep": "./sleep/index.js",
-    "./urls": "./urls/index.js",
-    "./youtube": "./youtube/index.js"
+    "./bigmap": {
+      "types": "./bigmap/index.d.ts",
+      "default": "./bigmap/index.js"
+    },
+    "./bytes": {
+      "types": "./bytes/index.d.ts",
+      "default": "./bytes/index.js"
+    },
+    "./date": {
+      "types": "./date/index.d.ts",
+      "default": "./date/index.js"
+    },
+    "./detect-languages": {
+      "types": "./detect-languages/index.d.ts",
+      "default": "./detect-languages/index.js"
+    },
+    "./fetch2": {
+      "types": "./fetch2/index.d.ts",
+      "default": "./fetch2/index.js"
+    },
+    "./numeric-compare": {
+      "types": "./numeric-compare/index.d.ts",
+      "default": "./numeric-compare/index.js"
+    },
+    "./objects": {
+      "types": "./objects/index.d.ts",
+      "default": "./objects/index.js"
+    },
+    "./read-stream": {
+      "types": "./read-stream/index.d.ts",
+      "default": "./read-stream/index.js"
+    },
+    "./safe-filename": {
+      "types": "./safe-filename/index.d.ts",
+      "default": "./safe-filename/index.js"
+    },
+    "./server": {
+      "types": "./server/index.d.ts",
+      "default": "./server/index.js"
+    },
+    "./sleep": {
+      "types": "./sleep/index.d.ts",
+      "default": "./sleep/index.js"
+    },
+    "./urls": {
+      "types": "./urls/index.d.ts",
+      "default": "./urls/index.js"
+    },
+    "./youtube": {
+      "types": "./youtube/index.d.ts",
+      "default": "./youtube/index.js"
+    }
   }
 }
