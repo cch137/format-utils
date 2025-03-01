@@ -1,10 +1,12 @@
 {
   "name": "@cch137/format-utils",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "",
   "type": "module",
   "scripts": {
-    "dev": "bash bin/dev",
+    "devbuild": "tsc -w",
+    "devstart": "nodemon ./dist/index.test.js",
+    "dev": "npm-run-all --parallel devbuild devstart",
     "build": "npm i && tsc",
     "start": "node ./dist/index.test.js"
   },
