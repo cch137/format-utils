@@ -1,6 +1,6 @@
 {
   "name": "@cch137/format-utils",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "",
   "type": "module",
   "scripts": {
@@ -79,6 +79,10 @@
     "./youtube": {
       "types": "./youtube/index.d.ts",
       "default": "./youtube/index.js"
+    },
+    "./throttle-debounce": {
+      "types": "./throttle-debounce/index.d.ts",
+      "default": "./throttle-debounce/index.js"
     }
   }
 }
