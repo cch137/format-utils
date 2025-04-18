@@ -8,6 +8,10 @@
 
 - 提供 `Date` 格式化功能。
 
+### `deep-equal`
+
+- 提供 `deep-equal` 深度比較功能。
+
 ### `bytes`
 
 - 提供數值轉 bytes 格式化功能。

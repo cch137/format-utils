@@ -1,6 +1,6 @@
 {
   "name": "@cch137/format-utils",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "",
   "type": "module",
   "scripts": {
@@ -39,6 +39,10 @@
     "./date": {
       "types": "./date/index.d.ts",
       "default": "./date/index.js"
+    },
+    "./deep-equal": {
+      "types": "./deep-equal/index.d.ts",
+      "default": "./deep-equal/index.js"
     },
     "./detect-languages": {
       "types": "./detect-languages/index.d.ts",
