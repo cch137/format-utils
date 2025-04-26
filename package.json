@@ -1,8 +1,10 @@
 {
   "name": "@cch137/format-utils",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "",
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "devbuild": "tsc -w",
     "devstart": "nodemon ./dist/index.test.js",
@@ -28,65 +30,125 @@
     "node": ">=20"
   },
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    },
     "./bigmap": {
-      "types": "./bigmap/index.d.ts",
-      "default": "./bigmap/index.js"
+      "types": "./dist/bigmap/index.d.ts",
+      "default": "./dist/bigmap/index.js"
     },
     "./bytes": {
-      "types": "./bytes/index.d.ts",
-      "default": "./bytes/index.js"
+      "types": "./dist/bytes/index.d.ts",
+      "default": "./dist/bytes/index.js"
     },
     "./date": {
-      "types": "./date/index.d.ts",
-      "default": "./date/index.js"
+      "types": "./dist/date/index.d.ts",
+      "default": "./dist/date/index.js"
     },
     "./deep-equal": {
-      "types": "./deep-equal/index.d.ts",
-      "default": "./deep-equal/index.js"
+      "types": "./dist/deep-equal/index.d.ts",
+      "default": "./dist/deep-equal/index.js"
     },
     "./detect-languages": {
-      "types": "./detect-languages/index.d.ts",
-      "default": "./detect-languages/index.js"
+      "types": "./dist/detect-languages/index.d.ts",
+      "default": "./dist/detect-languages/index.js"
     },
     "./fetch2": {
-      "types": "./fetch2/index.d.ts",
-      "default": "./fetch2/index.js"
+      "types": "./dist/fetch2/index.d.ts",
+      "default": "./dist/fetch2/index.js"
     },
     "./numeric-compare": {
-      "types": "./numeric-compare/index.d.ts",
-      "default": "./numeric-compare/index.js"
+      "types": "./dist/numeric-compare/index.d.ts",
+      "default": "./dist/numeric-compare/index.js"
     },
     "./objects": {
-      "types": "./objects/index.d.ts",
-      "default": "./objects/index.js"
+      "types": "./dist/objects/index.d.ts",
+      "default": "./dist/objects/index.js"
     },
     "./read-stream": {
-      "types": "./read-stream/index.d.ts",
-      "default": "./read-stream/index.js"
+      "types": "./dist/read-stream/index.d.ts",
+      "default": "./dist/read-stream/index.js"
     },
     "./safe-filename": {
-      "types": "./safe-filename/index.d.ts",
-      "default": "./safe-filename/index.js"
+      "types": "./dist/safe-filename/index.d.ts",
+      "default": "./dist/safe-filename/index.js"
     },
     "./server": {
-      "types": "./server/index.d.ts",
-      "default": "./server/index.js"
+      "types": "./dist/server/index.d.ts",
+      "default": "./dist/server/index.js"
     },
     "./sleep": {
-      "types": "./sleep/index.d.ts",
-      "default": "./sleep/index.js"
+      "types": "./dist/sleep/index.d.ts",
+      "default": "./dist/sleep/index.js"
     },
     "./urls": {
-      "types": "./urls/index.d.ts",
-      "default": "./urls/index.js"
+      "types": "./dist/urls/index.d.ts",
+      "default": "./dist/urls/index.js"
     },
     "./youtube": {
-      "types": "./youtube/index.d.ts",
-      "default": "./youtube/index.js"
+      "types": "./dist/youtube/index.d.ts",
+      "default": "./dist/youtube/index.js"
     },
     "./throttle-debounce": {
-      "types": "./throttle-debounce/index.d.ts",
-      "default": "./throttle-debounce/index.js"
+      "types": "./dist/throttle-debounce/index.d.ts",
+      "default": "./dist/throttle-debounce/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "bigmap": [
+        "dist/bigmap/index.d.ts"
+      ],
+      "bytes": [
+        "dist/bytes/index.d.ts"
+      ],
+      "date": [
+        "dist/date/index.d.ts"
+      ],
+      "deep-equal": [
+        "dist/deep-equal/index.d.ts"
+      ],
+      "detect-languages": [
+        "dist/detect-languages/index.d.ts"
+      ],
+      "fetch2": [
+        "dist/fetch2/index.d.ts"
+      ],
+      "numeric-compare": [
+        "dist/numeric-compare/index.d.ts"
+      ],
+      "objects": [
+        "dist/objects/index.d.ts"
+      ],
+      "read-stream": [
+        "dist/read-stream/index.d.ts"
+      ],
+      "safe-filename": [
+        "dist/safe-filename/index.d.ts"
+      ],
+      "server": [
+        "dist/server/index.d.ts"
+      ],
+      "sleep": [
+        "dist/sleep/index.d.ts"
+      ],
+      "urls": [
+        "dist/urls/index.d.ts"
+      ],
+      "youtube": [
+        "dist/youtube/index.d.ts"
+      ],
+      "throttle-debounce": [
+        "dist/throttle-debounce/index.d.ts"
+      ],
+      "*": [
+        "dist/*"
+      ]
     }
   }
 }
