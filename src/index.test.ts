@@ -1,3 +1,3 @@
-import getRequestIp from "@cch137/format-utils/server";
+import formatDate from "./date/index.js";
 
-getRequestIp;
+formatDate;

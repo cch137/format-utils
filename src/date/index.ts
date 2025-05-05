@@ -117,7 +117,7 @@ const tokenConverterMap = (() => {
 })();
 
 /** Default format: `yyyy-MM-dd HH:mm:ss` */
-export default function formatDate(
+export function formatDate(
   date: Date,
   format = "yyyy-MM-dd HH:mm:ss",
   isUTC = false
@@ -140,3 +140,86 @@ export default function formatDate(
 
   return parts.join("");
 }
+
+export default formatDate;
+
+/**
+ * Formats a Date object as relative time (e.g., "2 minutes ago", "yesterday", "3 days ago")
+ * for dates within 15 days. For dates beyond 15 days, displays formatted date (e.g., "2023-01-10").
+ * Displays "just now" if the time difference is 1 second or less.
+ * Optimized to prioritize diffDays > 15 and defer rtf creation.
+ * @param date - Input Date object.
+ * @param locale - Locale for formatting (e.g., 'en', 'zh-CN'). Defaults to 'en'.
+ * @param dateFormatOptions - Options for formatting dates beyond 15 days.
+ * @returns Relative time or formatted date string.
+ * @throws Error if the input date is invalid.
+ */
+export function formatRelativeDate(
+  date: Date,
+  locale: string = "en",
+  dateFormatOptions: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }
+): string {
+  // Validate input date
+  if (!(date instanceof Date) || isNaN(date.getTime())) {
+    throw new Error("Invalid date");
+  }
+
+  // Calculate days difference first
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+  // Prioritize diffDays > 15
+  if (diffDays > 15) {
+    const dtf = new Intl.DateTimeFormat(locale, dateFormatOptions);
+    return dtf.format(date); // e.g., "01/10/2023" (en) or "2023-01-10" (zh-CN)
+  }
+
+  // Calculate finer-grained differences only if needed
+  const diffSeconds = Math.floor(diffMs / 1000);
+  const diffMinutes = Math.floor(diffSeconds / 60);
+  const diffHours = Math.floor(diffMinutes / 60);
+
+  // Initialize Intl.RelativeTimeFormat only for relative time cases
+  const rtf = new Intl.RelativeTimeFormat(locale, {
+    numeric: "auto",
+    style: "long",
+  });
+
+  // Handle relative time cases
+  if (diffDays >= 2) {
+    return rtf.format(-diffDays, "day"); // "n days ago"
+  } else if (diffDays === 1) {
+    return rtf.format(-1, "day"); // "yesterday"
+  } else if (diffHours >= 1) {
+    return rtf.format(-diffHours, "hour"); // "n hours ago"
+  } else if (diffMinutes >= 1) {
+    return rtf.format(-diffMinutes, "minute"); // "n minutes ago"
+  } else if (diffSeconds <= 1) {
+    return "just now"; // 0 or 1 second
+  } else {
+    return rtf.format(-diffSeconds, "second"); // "n seconds ago"
+  }
+}
+
+// Example usage:
+/*
+const now = new Date();
+console.log(formatRelativeTimeOrDate(now)); // "just now"
+console.log(formatRelativeTimeOrDate(new Date(now.getTime() - 1000))); // "just now" (1 second)
+console.log(formatRelativeTimeOrDate(new Date(now.getTime() - 5 * 1000))); // "5 seconds ago"
+console.log(formatRelativeTimeOrDate(new Date(now.getTime() - 2 * 60 * 1000))); // "2 minutes ago"
+console.log(formatRelativeTimeOrDate(new Date(now.getTime() - 3 * 60 * 60 * 1000))); // "3 hours ago"
+console.log(formatRelativeTimeOrDate(new Date(now.getTime() - 24 * 60 * 60 * 1000))); // "yesterday"
+console.log(formatRelativeTimeOrDate(new Date(now.getTime() - 5 * 24 * 60 * 60 * 1000))); // "5 days ago"
+console.log(formatRelativeTimeOrDate(new Date(now.getTime() - 16 * 24 * 60 * 60 * 1000))); // "04/19/2025" (en)
+console.log(formatRelativeTimeOrDate(new Date('2023-01-10'), 'zh-CN')); // "2023-01-10" (zh-CN)
+
+// TypeScript type checking prevents invalid inputs:
+// formatRelativeTimeOrDate('2023-01-10'); // TS error: Argument of type 'string' is not assignable to parameter of type 'Date'
+// formatRelativeTimeOrDate(new Date('invalid')); // Throws Error: Invalid date
+*/
