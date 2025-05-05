@@ -1,3 +1,3 @@
-import formatDate from "./date/index.js";
+// import formatDate from "./date/index.js";
 
-formatDate;
+// formatDate;
