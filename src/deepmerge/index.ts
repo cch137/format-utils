@@ -34,6 +34,14 @@ export function deepmerge<T extends Record<string, any>>(
   const prototypeOfArray = Object.getPrototypeOf([]);
   const prototypeOfObject = Object.getPrototypeOf({});
 
+  const isMergable = (o: unknown) =>
+    o &&
+    typeof o === "object" &&
+    Object.getPrototypeOf(o) === prototypeOfObject;
+
+  const isArray = (o: unknown) =>
+    Array.isArray(o) && Object.getPrototypeOf(o) === prototypeOfArray;
+
   // Merge remaining objects
   for (let i = 1; i < validObjects.length; i++) {
     const currentObj = validObjects[i];
@@ -50,27 +58,16 @@ export function deepmerge<T extends Record<string, any>>(
         }
 
         // If both values are objects and not arrays, recursively merge them
-        if (
-          typeof existingValue === "object" &&
-          !Array.isArray(existingValue) &&
-          existingValue !== null &&
-          typeof currentValue === "object" &&
-          !Array.isArray(currentValue) &&
-          currentValue !== null
-        ) {
+        if (isMergable(existingValue) && isMergable(currentValue)) {
           // @ts-ignore deepmerge
           result[key] = deepmerge(existingValue, currentValue);
         } else {
           // For arrays, functions, primitives, or when existing value is null/undefined,
           // simply replace with current value (with proper cloning)
-          if (Object.getPrototypeOf(currentValue) === prototypeOfArray) {
+          if (isArray(currentValue)) {
             // @ts-ignore deepmerge
             result[key] = [...currentValue];
-          } else if (
-            currentValue &&
-            typeof currentValue === "object" &&
-            Object.getPrototypeOf(currentValue) === prototypeOfObject
-          ) {
+          } else if (isMergable(currentValue)) {
             result[key] = { ...currentValue };
           } else {
             result[key] = currentValue;
