@@ -31,6 +31,8 @@ export function deepmerge<T extends Record<string, any>>(
 
   // Start with first object as base
   const result = { ...validObjects[0] };
+  const prototypeOfArray = Object.getPrototypeOf([]);
+  const prototypeOfObject = Object.getPrototypeOf({});
 
   // Merge remaining objects
   for (let i = 1; i < validObjects.length; i++) {
@@ -61,10 +63,14 @@ export function deepmerge<T extends Record<string, any>>(
         } else {
           // For arrays, functions, primitives, or when existing value is null/undefined,
           // simply replace with current value (with proper cloning)
-          if (Array.isArray(currentValue)) {
+          if (Object.getPrototypeOf(currentValue) === prototypeOfArray) {
             // @ts-ignore deepmerge
             result[key] = [...currentValue];
-          } else if (typeof currentValue === "object") {
+          } else if (
+            currentValue &&
+            typeof currentValue === "object" &&
+            Object.getPrototypeOf(currentValue) === prototypeOfObject
+          ) {
             result[key] = { ...currentValue };
           } else {
             result[key] = currentValue;
