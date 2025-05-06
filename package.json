@@ -1,6 +1,6 @@
 {
   "name": "@cch137/format-utils",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "A collection of utility modules for formatting and processing data",
   "type": "module",
   "repository": {
@@ -40,6 +40,10 @@
     "./deep-equal": {
       "import": "./dist/deep-equal/index.js",
       "types": "./dist/deep-equal/index.d.ts"
+    },
+    "./deepmerge": {
+      "import": "./dist/deepmerge/index.js",
+      "types": "./dist/deepmerge/index.d.ts"
     },
     "./detect-languages": {
       "import": "./dist/detect-languages/index.js",
